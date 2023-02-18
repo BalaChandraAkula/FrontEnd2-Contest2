@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lato:wght@300;400;700;900&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>F2-Contest2-Feb</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: black;
+            color: whitesmoke;
+            font-family: 'Inter';
+            font-style: normal;
+        }
+        .container{
+            margin : 50px;
+        }
+        h1{
+            font-weight: normal;
+        }
+        .form-element{
+            margin: 20px auto;
+            /* font-size : 20px; */
+        }
+        .form-element-input input{
+            margin-left: 35px;
+        }
+        input{
+            width: 350px;
+            height: 38px;
+            background-color: black;
+            margin: auto 20px;
+            color: whitesmoke;
+            padding: 5px 10px;
+            border: 1px solid #FFFFFF;
+        }
+        .button{
+            margin-top: 10px;
+            margin-left: 0px;
+            color: #000000;
+            background-color: #FFFFFF;
+            width: 460px;
+            height: 40px;
+            cursor: pointer;
+        }
+        table{
+            margin: 50px auto;
+            width: 100%;   
+            /* height: 300px;    */
+            border: 1px solid whitesmoke;   
+            border-collapse: collapse;   
+        }
+         thead td{
+            border: 1px solid whitesmoke;
+            border-collapse: collapse;
+        } 
+        tr{
+            height: 40px;
+        }
+        td{
+            padding: 15px;
+            border-left: 1px solid whitesmoke;
+            border-right: 1px solid whitesmoke;
+        }
+         
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <form id="myForm">
+            <div class="form-element ">
+                <label for="name">Book Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-element form-element-input">
+                <label for="toName">Issued To</label>
+                <input type="text" id="toName" required>
+            </div>
+            <input class="button" type="submit" value="Issue Book">
+        </form>
+        <table>
+            <thead>
+                <td>ID</td>
+                <td>Book Name</td>
+                <td>Issued To</td>
+                <td>Issue Date and Time</td>
+                <td>Status</td>
+            </thead>
+            
+            <tbody id="tbody">
+                
+                
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const form = document.getElementById('myForm');
+        var num = 1;
+
+        form.addEventListener('submit', function(event) {
+        event.preventDefault(); // prevent form submission
+
+      // get form values
+        const name = document.getElementById('name').value;
+        const toName = document.getElementById('toName').value;
+        const time = new Date().toLocaleString();
+        const extra = 'Not Returned';
+        
+      // display form details
+        // const result = document.getElementById('result');
+        // result.innerHTML = `Name: ${name}<br>Email: ${email}<br>Message: ${message}`;
+        // console.log(num);
+        // console.log(name);
+        // console.log(toName);
+        // console.log(time);
+        // console.log(time.length);
+
+        const tbody = document.getElementById('tbody');
+
+        const row = document.createElement('tr');
+        tbody.appendChild(row);
+
+        const td1 = document.createElement('td');
+        td1.innerHTML = num;
+        row.appendChild(td1);
+        const td2 = document.createElement('td');
+        td2.innerHTML = name;
+        row.appendChild(td2);
+        const td3 = document.createElement('td');
+        td3.innerHTML = toName;
+        row.appendChild(td3);
+        const td4 = document.createElement('td');
+        td4.innerHTML = time;
+        row.appendChild(td4);
+        const td5 = document.createElement('td');
+        td5.innerHTML = extra;
+        td5.style.color = "red";
+
+        row.appendChild(td5);
+        num++;
+        });
+    </script>
+</body>
+</html>
+
+
